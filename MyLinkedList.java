@@ -6,7 +6,9 @@ class MyLinkedList{
     start = newStart;
     end = newEnd;
   }
-  public int size();
+  public int size() {
+    
+  }
   public boolean add(int value);
   public String toString();
 }
