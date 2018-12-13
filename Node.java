@@ -9,19 +9,23 @@ class Node{
  public int getData() {
    return data;
  }
- public Node getNext() {
+ public Node next() {
    return next;
  }
- public Node getPrev() {
+ public Node prev() {
    return prev;
  }
- public void setData(int newData) {
-   data = newData;
+ public void setData(int i) {
+   data = i;
  }
- public void setNext(Node newNext) {
-   next = newNext;
+ public void setNext(Node other) {
+   next = other;
  }
- public void setPrev(Node newPrev) {
-   prev = newPrev;
+ public void setPrev(Node other) {
+   prev = other;
+ }
+ public String toString() {
+   String K = "" + data;
+   return K;  
  }
 }
