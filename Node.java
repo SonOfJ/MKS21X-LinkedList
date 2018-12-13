@@ -15,8 +15,10 @@ class Node{
  public Node prev() {
    return prev;
  }
- public void setData(int i) {
+ public int setData(int i) {
+   int K = data;
    data = i;
+   return K;
  }
  public void setNext(Node other) {
    next = other;
@@ -26,6 +28,6 @@ class Node{
  }
  public String toString() {
    String K = "" + data;
-   return K;  
+   return K;
  }
 }
