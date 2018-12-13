@@ -15,4 +15,13 @@ class Node{
  public Node getPrev() {
    return prev;
  }
+ public void setData(int newData) {
+   data = newData;
+ }
+ public void setNext(Node newNext) {
+   next = newNext;
+ }
+ public void setPrev(Node newPrev) {
+   prev = newPrev;
+ }
 }
