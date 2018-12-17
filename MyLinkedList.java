@@ -77,4 +77,30 @@ class MyLinkedList{
     }
     return -1; //If the value is never found
   }
+  public void add(int index, int value) {
+    if (size == 0 && index != 0 || size != 0 && index > size - 1 || index < 0) { //Invalid input for index
+      throw new IndexOutOfBoundsException("Index is out of bounds.");
+    }
+    if (size == 0) { //If adding to an empty list
+      Node element = new Node(value, null, null); //There can be no previous or next elements
+      size = size + 1; //The size goes from zero to one
+      start = element; //The first node would be the element
+      end = element; //The last node would also be the element
+    } else if (index == size) { //If adding to the end of a list
+      Node element = new Node(value, null, end); //The is no next element but the previous element would be the old last element
+      size = size + 1; //Increase the size
+      end.setNext(element); //Change the constructor of the old last element
+      end = element; //New last element
+    } else if (index == 0) { //If adding to the beginning of a list
+      Node element = new Node(value, start, null); //The is no previous element
+      size = size + 1; //Increase the size
+      start.setPrev(element); //Change the constructor of the old first element
+      start = element; //New first element
+    } else { //If the element is in the middle of the list
+      Node element = new Node(value, getNthNode(index), getNthNode(index - 1)); //The old node at the index is the next node and the previous old node is still the previous node
+      size = size + 1; //Start and end are unaffected
+      getNthNode(index - 1).setNext(element); //Change the next of the node before
+      getNthNode(index).setPrev(element); //Change the previous of the node after
+    }
+  }
 }
