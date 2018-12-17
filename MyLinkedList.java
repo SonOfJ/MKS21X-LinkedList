@@ -13,6 +13,7 @@ class MyLinkedList{
       size = size + 1; //The size goes from zero to one
       start = element; //The first node would be the element
       end = element; //The last node would also be the element
+      return true; //This is a boolean function
     } else { //What if the list were to have more than one element
       Node element = new Node(value, null, end); //The is no next element but the previous element would be the old last element
       size = size + 1; //Increase the size
@@ -22,12 +23,16 @@ class MyLinkedList{
     }
   }
   public String toString() {
-    String sad = "[";
-    Node index = start;
-    while (index != end) {
-      sad = sad + index;
-      index = getNext();
+    String sad = "["; //Creates the string of a new list
+    if (size == 0) {
+      return "[]"; //This is what should be returned if the list is empty
     }
-    return sad;
+    Node index = start; //This runs through the entire list
+    while (index != end) { //While index is not the last index
+      sad = sad + index.getData() + ", "; //Add the current element to the string
+      index = index.next(); //Changes to next element
+    }
+    sad = sad + index.getData() + "]"; //At the last element now
+    return sad; //Return the final product
   }
 }
