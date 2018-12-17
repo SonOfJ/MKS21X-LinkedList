@@ -78,7 +78,7 @@ class MyLinkedList{
     return -1; //If the value is never found
   }
   public void add(int index, int value) {
-    if (size == 0 && index != 0 || size != 0 && index > size - 1 || index < 0) { //Invalid input for index
+    if (size == 0 && index != 0 || size != 0 && index > size || index < 0) { //Invalid input for index
       throw new IndexOutOfBoundsException("Index is out of bounds.");
     }
     if (size == 0) { //If adding to an empty list
@@ -102,5 +102,24 @@ class MyLinkedList{
       getNthNode(index - 1).setNext(element); //Change the next of the node before
       getNthNode(index).setPrev(element); //Change the previous of the node after
     }
+  }
+  public int remove(int index) {
+    if (size == 0 || index > size - 1 || index < 0) { //Invalid input for index
+      throw new IndexOutOfBoundsException("Index is out of bounds.");
+    }
+    if (index == size - 1) { //If removing at the end of a list
+      getNthNode(index - 1).setNext(null); //Change the previous element's next to null
+      size = size - 1; //Decrease the size
+      end = getNthNode(index - 1); //New last element
+    } else if (index == 0) { //If removing at the beginning of a list
+      getNthNode(index + 1).setPrev(null); //Change the next element's previous to null
+      size = size - 1; //Decrease the size
+      start = getNthNode(index + 1); //New first element
+    } else { //If the element is in the middle of the list
+      getNthNode(index + 1).setPrev(getNthNode(index - 1)); //Set the next node's previous to the previous node
+      getNthNode(index - 1).setNext(getNthNode(index + 1)); //Set the previous node's next to the next node
+      size = size - 1; //Start and end are unaffected
+    }
+    return getNthNode(index).getData();
   }
 }
