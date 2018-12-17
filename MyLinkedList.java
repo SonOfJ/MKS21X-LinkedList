@@ -67,4 +67,14 @@ class MyLinkedList{
     }
     return false; //Value is not found
   }
+  public int indexOf(int value) {
+    Node index = start; //Will change with the progression of the function
+    for(int i = 0; i < size; i = i + 1) {
+      if (index.getData() == value) { //If the value is found
+        return i; //Return the index
+      }
+      index = index.next(); //Update the node to the next one
+    }
+    return -1; //If the value is never found
+  }
 }
