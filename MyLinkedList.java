@@ -122,4 +122,11 @@ class MyLinkedList{
     }
     return getNthNode(index).getData();
   }
+  public boolean remove(Integer value) {
+    if (contains(value)) { //Checks to see if value exists
+      remove(indexOf(value)); //Remove at the index of value
+      return true; //Return true
+    }
+    return false; //Return false
+  }
 }
