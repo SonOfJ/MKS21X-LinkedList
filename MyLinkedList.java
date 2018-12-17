@@ -48,4 +48,13 @@ class MyLinkedList{
     }
     return getNthNode(index).getData(); //Uses helper function to get the correct node and then gets the correct value for that node
   }
+  public int set(int index, int value) {
+    if (index > size - 1 || index < 0) { //Invalid input for index
+      throw new IndexOutOfBoundsException("Index is out of bounds.");
+    }
+    Node old = getNthNode(index); //Gets the node at the desired index
+    int wanted = old.getData(); //Gets the old value of the wanted node to be returned later
+    old.setData(value); //Puts in the new value
+    return wanted; //Returns the final integer value
+  }
 }
