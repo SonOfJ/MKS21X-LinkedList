@@ -38,7 +38,7 @@ class MyLinkedList{
   private Node getNthNode(int n) { //Helper function
     Node index = start;
     for(int i = 0; i < n; i = i + 1) { //Goes through the list until hitting n
-      index = index.getNext();
+      index = index.next();
     }
     return index; //Returns the desired node
   }
@@ -46,6 +46,6 @@ class MyLinkedList{
     if (index > size - 1 || index < 0) { //Invalid input for index
       throw new IndexOutOfBoundsException("Index is out of bounds.");
     }
-    Node old = getNode
+    return getNthNode(index).getData(); //Uses helper function to get the correct node and then gets the correct value for that node
   }
 }
