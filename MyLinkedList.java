@@ -57,4 +57,14 @@ class MyLinkedList{
     old.setData(value); //Puts in the new value
     return wanted; //Returns the final integer value
   }
+  public boolean contains(int value) {
+    Node index = start; //Will change with the progression of the function
+    for(int i = 0; i < size; i = i + 1) {
+      if (index.getData() == value) { //If the value has been found
+        return true; //Return true
+      }
+      index = index.next(); //Change to the next node
+    }
+    return false; //Value is not found
+  }
 }
