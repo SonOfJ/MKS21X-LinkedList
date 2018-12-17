@@ -107,6 +107,7 @@ class MyLinkedList{
     if (size == 0 || index > size - 1 || index < 0) { //Invalid input for index
       throw new IndexOutOfBoundsException("Index is out of bounds.");
     }
+    int old = getNthNode(index).getData();
     if (index == size - 1) { //If removing at the end of a list
       getNthNode(index - 1).setNext(null); //Change the previous element's next to null
       size = size - 1; //Decrease the size
@@ -120,7 +121,7 @@ class MyLinkedList{
       getNthNode(index - 1).setNext(getNthNode(index + 1)); //Set the previous node's next to the next node
       size = size - 1; //Start and end are unaffected
     }
-    return getNthNode(index).getData();
+    return old;
   }
   public boolean remove(Integer value) {
     if (contains(value)) { //Checks to see if value exists
