@@ -6,7 +6,7 @@ class Node{
    next = newNext;
    prev = newPrev;
  }
- public int getData() {
+ public Integer getData() {
    return data;
  }
  public Node next() {
@@ -15,7 +15,7 @@ class Node{
  public Node prev() {
    return prev;
  }
- public int setData(int i) {
+ public Integer setData(int i) {
    int K = data;
    data = i;
    return K;
