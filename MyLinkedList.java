@@ -35,4 +35,17 @@ class MyLinkedList{
     sad = sad + index.getData() + "]"; //At the last element now
     return sad; //Return the final product
   }
+  private Node getNthNode(int n) { //Helper function
+    Node index = start;
+    for(int i = 0; i < n; i = i + 1) { //Goes through the list until hitting n
+      index = index.getNext();
+    }
+    return index; //Returns the desired node
+  }
+  public int get(int index) {
+    if (index > size - 1 || index < 0) { //Invalid input for index
+      throw new IndexOutOfBoundsException("Index is out of bounds.");
+    }
+    Node old = getNode
+  }
 }
