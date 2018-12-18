@@ -131,4 +131,20 @@ class MyLinkedList{
     }
     return false; //Return false
   }
+  public void extend(MyLinkedList other) {
+    if (size == 0) { //What if the first list were empty
+      start = other.start;
+      end = other.end;
+      size = other.size;
+    }
+    if (other.size != 0) { //What if the second list was not empty
+      end.setNext(other.start); //The next element after the last of the first list is the first of the otehr list
+      other.start.setPrev(end); //The element before the first of the other list is the last of the first list
+      size = size + other.size; //Add the two sizes
+      end = other.end; //The new end is the end of the other list
+      other.size = 0; //The other list should be empty now
+      other.start = null; //The other list should be empty now
+      other.end = null; //The other list should be empty now
+    }
+  }
 }
