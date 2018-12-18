@@ -81,6 +81,7 @@ class MyLinkedList{
     if (size == 0 && index != 0 || size != 0 && index > size || index < 0) { //Invalid input for index
       throw new IndexOutOfBoundsException("Index is out of bounds.");
     }
+    Node joke = getNthNode(index);
     if (size == 0) { //If adding to an empty list
       Node element = new Node(value, null, null); //There can be no previous or next elements
       size = size + 1; //The size goes from zero to one
@@ -97,31 +98,31 @@ class MyLinkedList{
       start.setPrev(element); //Change the constructor of the old first element
       start = element; //New first element
     } else { //If the element is in the middle of the list
-      Node element = new Node(value, getNthNode(index), getNthNode(index - 1)); //The old node at the index is the next node and the previous old node is still the previous node
+      Node element = new Node(value, joke, joke.prev()); //The old node at the index is the next node and the previous old node is still the previous node
       size = size + 1; //Start and end are unaffected
-      getNthNode(index - 1).setNext(element); //Change the next of the node before
-      getNthNode(index).setPrev(element); //Change the previous of the node after
+      joke.prev().setNext(element); //Change the next of the node before
+      joke.setPrev(element); //Change the previous of the node after
     }
   }
   public int remove(int index) {
     if (size == 0 || index > size - 1 || index < 0) { //Invalid input for index
       throw new IndexOutOfBoundsException("Index is out of bounds.");
     }
-    int old = getNthNode(index).getData();
+    Node old = getNthNode(index);
     if (index == size - 1) { //If removing at the end of a list
-      getNthNode(index - 1).setNext(null); //Change the previous element's next to null
+      old.prev().setNext(null); //Change the previous element's next to null
       size = size - 1; //Decrease the size
-      end = getNthNode(index - 1); //New last element
+      end = old.prev(); //New last element
     } else if (index == 0) { //If removing at the beginning of a list
-      getNthNode(index + 1).setPrev(null); //Change the next element's previous to null
+      old.next().setPrev(null); //Change the next element's previous to null
       size = size - 1; //Decrease the size
-      start = getNthNode(index + 1); //New first element
+      start = old.next(); //New first element
     } else { //If the element is in the middle of the list
-      getNthNode(index + 1).setPrev(getNthNode(index - 1)); //Set the next node's previous to the previous node
-      getNthNode(index - 1).setNext(getNthNode(index + 1)); //Set the previous node's next to the next node
+      old.next().setPrev(old.prev()); //Set the next node's previous to the previous node
+      old.prev().setNext(old.next()); //Set the previous node's next to the next node
       size = size - 1; //Start and end are unaffected
     }
-    return old;
+    return old.getData();
   }
   public boolean remove(Integer value) {
     if (contains(value)) { //Checks to see if value exists
