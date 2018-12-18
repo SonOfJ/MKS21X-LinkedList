@@ -132,10 +132,13 @@ class MyLinkedList{
     return false; //Return false
   }
   public void extend(MyLinkedList other) {
-    if (size == 0) { //What if the first list were empty
+    if (size == 0 && other.size != 0) { //What if the first list were empty
+      size = other.size;
       start = other.start;
       end = other.end;
-      size = other.size;
+      other.size = 0;
+      other.start = null;
+      other.end = null;
     }
     if (other.size != 0) { //What if the second list was not empty
       end.setNext(other.start); //The next element after the last of the first list is the first of the otehr list
